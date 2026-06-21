@@ -1,30 +1,66 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:linghe_mobile_template/main.dart';
+import 'package:get/get.dart';
+import 'package:linghe_mobile_template/app/app.dart';
+import 'package:linghe_mobile_template/app/core/services/app_services.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  const pathProviderChannel = MethodChannel('plugins.flutter.io/path_provider');
 
-    // Verify that our counter starts at 0.
+  late Directory storageDirectory;
+
+  setUpAll(() async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+
+    storageDirectory = await Directory.systemTemp.createTemp(
+      'linghe_mobile_template_test_',
+    );
+
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(pathProviderChannel, (call) async {
+          return storageDirectory.path;
+        });
+  });
+
+  setUp(() async {
+    await AppServices.init(storagePath: storageDirectory.path);
+  });
+
+  tearDown(() {
+    Get.reset();
+  });
+
+  tearDownAll(() async {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(pathProviderChannel, null);
+
+    if (storageDirectory.existsSync()) {
+      await storageDirectory.delete(recursive: true);
+    }
+  });
+
+  testWidgets('shows home after splash bootstrap', (tester) async {
+    await tester.pumpWidget(const LingheMobileTemplateApp());
+    await tester.pump(const Duration(milliseconds: 700));
+    await tester.pumpAndSettle();
+
+    expect(find.byIcon(Icons.settings_outlined), findsOneWidget);
+    expect(find.byType(FloatingActionButton), findsOneWidget);
+  });
+
+  testWidgets('increments counter with GetX state', (tester) async {
+    await tester.pumpWidget(const LingheMobileTemplateApp());
+    await tester.pump(const Duration(milliseconds: 700));
+    await tester.pumpAndSettle();
+
     expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.add));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
 }
