@@ -1,0 +1,33 @@
+<类型>(<范围>): <一句话说明>
+
+# 变更原因
+# - 
+#
+# 变更内容
+# - 
+#
+# 验证方式
+# - 
+#
+# 类型说明，提交标题里的类型建议使用以下英文关键字：
+#   feat     新功能
+#   fix      修复问题
+#   refactor 重构代码，不改变外部行为
+#   perf     性能优化
+#   style    代码格式调整，不改变逻辑
+#   test     新增或更新测试
+#   docs     文档变更
+#   build    构建系统或依赖变更
+#   ci       CI 配置变更
+#   chore    维护性任务
+#   revert   回退之前的提交
+#
+# 当前 Flutter 项目建议使用的范围：
+#   app, ui, android, ios, deps, build, test, docs, ci
+#
+# 首行建议控制在 72 个字符以内。
+# 示例：
+#   feat(app): add onboarding entry screen
+#
+# 初始化 git 后，可以用下面的命令启用该模板：
+#   git config commit.template .gitmessage
