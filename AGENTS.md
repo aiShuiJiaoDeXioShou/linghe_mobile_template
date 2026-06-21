@@ -71,6 +71,37 @@ flutter test
 - 不提交无关格式化、构建产物、`.dart_tool/`、`build/`、IDE 私有文件。
 - 不把参考项目里的私有依赖地址、密钥、生产配置直接复制到模板。
 
+## 本地 Skills
+
+仓库级共享 skills 放在 `.agents/skills/`，Claude 和 Codex 入口分别放在 `.claude/skills/` 与 `.codex/skills/`。
+
+当前已配置：
+
+- `$getx-translate`：Flutter GetX 多语言自动翻译助手，用于添加或更新 GetX translations、维护 `assets/locales/*.json`、生成 `lib/generated/locales.g.dart`。
+
+共享路径：
+
+```text
+.agents/skills/getx-translate
+```
+
+兼容入口：
+
+```text
+.codex/skills/getx-translate
+.claude/skills/getx-translate
+```
+
+维护规则：
+
+- 只修改 `.agents/skills/getx-translate` 下的共享版本。
+- 不要分别修改 `.codex/skills/getx-translate` 和 `.claude/skills/getx-translate`。
+- 修改 skill 后运行：
+
+```bash
+python3 /Users/linghe/.codex/skills/.system/skill-creator/scripts/quick_validate.py .agents/skills/getx-translate
+```
+
 ## CI/CD
 
 仓库内置 GitHub Actions：

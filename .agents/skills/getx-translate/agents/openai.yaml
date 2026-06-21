@@ -1,0 +1,4 @@
+interface:
+  display_name: "GetX Translate"
+  short_description: "自动更新 GetX 多语言翻译文件"
+  default_prompt: "Use $getx-translate to add or update Flutter GetX translations and regenerate locales code."
