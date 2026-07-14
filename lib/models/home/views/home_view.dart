@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../generated/locales.g.dart';
+import '../../../generated/locales.g.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {

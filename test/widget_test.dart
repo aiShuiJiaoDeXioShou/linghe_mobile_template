@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:linghe_mobile_template/app/app.dart';
-import 'package:linghe_mobile_template/app/core/services/app_services.dart';
+import 'package:linghe_mobile_template/app.dart';
+import 'package:linghe_mobile_template/bootstrap/app_services.dart';
 
 void main() {
   const pathProviderChannel = MethodChannel('plugins.flutter.io/path_provider');

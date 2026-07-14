@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import 'api_client.dart';
-import 'storage_service.dart';
+import '../services/api_client.dart';
+import '../services/storage_service.dart';
 
 abstract final class AppServices {
   static Future<void> init({String? storagePath}) async {

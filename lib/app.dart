@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
-import '../generated/locales.g.dart';
-import 'bindings/initial_binding.dart';
-import 'core/config/app_config.dart';
-import 'core/config/storage_keys.dart';
-import 'core/services/storage_service.dart';
-import 'core/theme/app_theme.dart';
+import 'config/app_config.dart';
+import 'config/storage_keys.dart';
+import 'generated/locales.g.dart';
 import 'routes/app_pages.dart';
+import 'services/storage_service.dart';
+import 'theme/app_theme.dart';
 
 class LingheMobileTemplateApp extends StatefulWidget {
   const LingheMobileTemplateApp({super.key});
@@ -40,7 +39,6 @@ class _LingheMobileTemplateAppState extends State<LingheMobileTemplateApp>
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppConfig.appName,
-      initialBinding: InitialBinding(),
       initialRoute: AppPages.initial,
       getPages: AppPages.routes,
       defaultTransition: Transition.cupertino,

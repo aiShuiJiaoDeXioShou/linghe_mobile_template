@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../generated/locales.g.dart';
-import '../../../core/config/storage_keys.dart';
-import '../../../core/services/storage_service.dart';
+import '../../../config/storage_keys.dart';
+import '../../../generated/locales.g.dart';
+import '../../../services/storage_service.dart';
 
 class SettingsController extends GetxController {
   final isDarkMode = false.obs;
