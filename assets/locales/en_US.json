@@ -1,0 +1,21 @@
+{
+    "app_name": "Linghe Mobile Template",
+    "counter_increment": "Increase counter",
+    "counter_title": "Counter",
+    "home_greeting": "Hello, Linghe",
+    "home_summary": "Today",
+    "home_title": "Dashboard",
+    "metric_done": "Done",
+    "metric_messages": "Messages",
+    "metric_pending": "Pending",
+    "settings_about": "About template",
+    "settings_about_desc": "Flutter + GetX project skeleton",
+    "settings_cache_cleared_message": "Local cache has been cleared",
+    "settings_cache_cleared_title": "Cleared",
+    "settings_storage": "Clear local cache",
+    "settings_storage_desc": "Remove template data from GetStorage",
+    "settings_theme": "Dark mode",
+    "settings_theme_desc": "Switch the current app theme",
+    "settings_title": "Settings",
+    "splash_status": "Preparing workspace"
+}

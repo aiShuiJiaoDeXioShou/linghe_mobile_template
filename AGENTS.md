@@ -34,8 +34,11 @@
 
 ## 国际化与文案
 
-- 页面文案通过 `key.tr` 获取，不要在业务页面散落大量硬编码文案。
-- 新增文案时同步更新 `AppTranslations.keys` 的中文和英文。
+- 国际化源文件统一维护在 `assets/locales/*.json`，不要继续手工维护 `AppTranslations.keys`。
+- 页面文案使用生成的 `LocaleKeys.xxx.tr` 获取，不要在业务页面散落大量硬编码文案或手写翻译 key。
+- 新增或修改文案时使用 `$getx-translate`，同步更新 `assets/locales/` 下所有已支持语言的 JSON 文件。
+- 语言文件更新后运行 `get generate locales assets/locales`，生成 `lib/generated/locales.g.dart`；生成文件不要手工修改。
+- `GetMaterialApp` 使用 `translationsKeys: AppTranslation.translations` 接入 GetX translations。
 - 默认 fallback locale 是 `zh_CN`，英文为 `en_US`。
 - 面向用户的错误提示要可翻译；日志和开发调试信息可以保留中文。
 
@@ -124,7 +127,7 @@ Android 使用 Java 17；Flutter 版本由 workflow 的 `FLUTTER_VERSION` 控制
 1. 创建模块目录：`bindings/`、`controllers/`、`views/`。
 2. 在 `app_routes.dart` 增加 `Routes.xxx` 和 `_Paths.xxx`。
 3. 在 `app_pages.dart` 注册 `GetPage` 和 Binding。
-4. 文案写入 `AppTranslations`。
+4. 使用 `$getx-translate` 将文案写入 `assets/locales/*.json`，重新生成 `lib/generated/locales.g.dart`，页面通过 `LocaleKeys.xxx.tr` 引用。
 5. 页面使用 `GetView< XxxController >` 或明确的无状态 Widget。
 6. Controller 中处理状态和导航。
 7. 运行 `flutter analyze` 和 `flutter test`。

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
-import 'app_translations.dart';
+import '../generated/locales.g.dart';
 import 'bindings/initial_binding.dart';
 import 'core/config/app_config.dart';
 import 'core/config/storage_keys.dart';
@@ -20,6 +20,9 @@ class LingheMobileTemplateApp extends StatefulWidget {
 
 class _LingheMobileTemplateAppState extends State<LingheMobileTemplateApp>
     with WidgetsBindingObserver {
+  static const _fallbackLocale = Locale('zh', 'CN');
+  static const _supportedLocales = [Locale('zh', 'CN'), Locale('en', 'US')];
+
   @override
   void initState() {
     super.initState();
@@ -44,16 +47,31 @@ class _LingheMobileTemplateAppState extends State<LingheMobileTemplateApp>
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: _initialThemeMode(),
-      translations: AppTranslations(),
-      locale: AppTranslations.locale,
-      fallbackLocale: AppTranslations.fallbackLocale,
-      supportedLocales: AppTranslations.supportedLocales,
+      translationsKeys: AppTranslation.translations,
+      locale: _initialLocale(),
+      fallbackLocale: _fallbackLocale,
+      supportedLocales: _supportedLocales,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
     );
+  }
+
+  Locale _initialLocale() {
+    final deviceLocale = Get.deviceLocale;
+    if (deviceLocale == null) {
+      return _fallbackLocale;
+    }
+
+    for (final supportedLocale in _supportedLocales) {
+      if (supportedLocale.languageCode == deviceLocale.languageCode) {
+        return supportedLocale;
+      }
+    }
+
+    return _fallbackLocale;
   }
 
   ThemeMode _initialThemeMode() {

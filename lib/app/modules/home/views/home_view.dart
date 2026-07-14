@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../generated/locales.g.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -10,12 +11,12 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('home_title'.tr),
+        title: Text(LocaleKeys.home_title.tr),
         actions: [
           IconButton(
             onPressed: controller.openSettings,
             icon: const Icon(Icons.settings_outlined),
-            tooltip: 'settings_title'.tr,
+            tooltip: LocaleKeys.settings_title.tr,
           ),
         ],
       ),
@@ -24,7 +25,7 @@ class HomeView extends GetView<HomeController> {
           padding: const EdgeInsets.all(20),
           children: [
             Text(
-              'home_greeting'.tr,
+              LocaleKeys.home_greeting.tr,
               style: Theme.of(
                 context,
               ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -38,7 +39,7 @@ class HomeView extends GetView<HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: controller.incrementCounter,
-        tooltip: 'counter_increment'.tr,
+        tooltip: LocaleKeys.counter_increment.tr,
         child: const Icon(Icons.add),
       ),
     );
@@ -50,16 +51,16 @@ class _SummarySection extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final metrics = [
-      _Metric(label: 'metric_done'.tr, value: '12'),
-      _Metric(label: 'metric_pending'.tr, value: '3'),
-      _Metric(label: 'metric_messages'.tr, value: '8'),
+      _Metric(label: LocaleKeys.metric_done.tr, value: '12'),
+      _Metric(label: LocaleKeys.metric_pending.tr, value: '3'),
+      _Metric(label: LocaleKeys.metric_messages.tr, value: '8'),
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'home_summary'.tr,
+          LocaleKeys.home_summary.tr,
           style: Theme.of(
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
@@ -126,7 +127,7 @@ class _CounterPanel extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'counter_title'.tr,
+              LocaleKeys.counter_title.tr,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: colorScheme.onPrimaryContainer,
                 fontWeight: FontWeight.w700,

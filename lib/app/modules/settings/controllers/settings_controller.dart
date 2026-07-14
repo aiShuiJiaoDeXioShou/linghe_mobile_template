@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../generated/locales.g.dart';
 import '../../../core/config/storage_keys.dart';
 import '../../../core/services/storage_service.dart';
 
@@ -29,8 +30,8 @@ class SettingsController extends GetxController {
     isDarkMode.value = Get.isDarkMode;
 
     Get.snackbar(
-      'settings_cache_cleared_title'.tr,
-      'settings_cache_cleared_message'.tr,
+      LocaleKeys.settings_cache_cleared_title.tr,
+      LocaleKeys.settings_cache_cleared_message.tr,
       snackPosition: SnackPosition.BOTTOM,
     );
   }

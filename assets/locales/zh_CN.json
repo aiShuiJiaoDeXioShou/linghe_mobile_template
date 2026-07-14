@@ -1,0 +1,21 @@
+{
+    "app_name": "Linghe 移动端模板",
+    "counter_increment": "增加计数",
+    "counter_title": "计数",
+    "home_greeting": "你好，Linghe",
+    "home_summary": "今日概览",
+    "home_title": "工作台",
+    "metric_done": "已完成",
+    "metric_messages": "消息",
+    "metric_pending": "待处理",
+    "settings_about": "关于模板",
+    "settings_about_desc": "Flutter + GetX 项目骨架",
+    "settings_cache_cleared_message": "本地缓存已清空",
+    "settings_cache_cleared_title": "已清理",
+    "settings_storage": "清理本地缓存",
+    "settings_storage_desc": "清空 GetStorage 中的模板数据",
+    "settings_theme": "深色模式",
+    "settings_theme_desc": "跟随当前应用设置切换主题",
+    "settings_title": "设置",
+    "splash_status": "正在准备工作台"
+}
