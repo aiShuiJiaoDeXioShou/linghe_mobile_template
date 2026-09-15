@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:linghe_mobile_template/app.dart';
-import 'package:linghe_mobile_template/bootstrap/app_services.dart';
+import 'package:linghe_mobile_template/data/data.dart';
 
 void main() {
   const pathProviderChannel = MethodChannel('plugins.flutter.io/path_provider');
@@ -26,7 +26,8 @@ void main() {
   });
 
   setUp(() async {
-    await AppServices.init(storagePath: storageDirectory.path);
+    await Data.init(storagePath: storageDirectory.path);
+    await Data.clear();
   });
 
   tearDown(() {

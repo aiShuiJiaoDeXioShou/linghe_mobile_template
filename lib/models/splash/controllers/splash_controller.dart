@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import '../../../routes/app_routes.dart';
+import 'package:linghe_mobile_template/routes/app_pages.dart';
 
 class SplashController extends GetxController {
   @override
@@ -11,6 +10,6 @@ class SplashController extends GetxController {
 
   Future<void> _bootstrap() async {
     await Future<void>.delayed(const Duration(milliseconds: 600));
-    await Get.offAllNamed(Routes.home);
+    await Get.offAllNamed(AppPages.home);
   }
 }

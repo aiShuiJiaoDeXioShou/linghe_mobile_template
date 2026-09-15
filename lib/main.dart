@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'app.dart';
-import 'bootstrap/app_services.dart';
+import 'data/data.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await AppServices.init();
+  await Data.init();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(const LingheMobileTemplateApp());

@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:linghe_mobile_template/data/data.dart';
 
-import '../../../config/storage_keys.dart';
 import '../../../generated/locales.g.dart';
-import '../../../services/storage_service.dart';
 
 class SettingsController extends GetxController {
-  final isDarkMode = false.obs;
-
-  StorageService get _storage => Get.find<StorageService>();
-
-  @override
-  void onInit() {
-    super.onInit();
-    isDarkMode.value = _storage.readBool(
-      StorageKeys.settingsDarkMode,
-      defaultValue: Get.isDarkMode,
-    );
-  }
+  final isDarkMode = (Data.settingsDarkMode == 'dark').obs;
 
   Future<void> toggleDarkMode(bool value) async {
-    isDarkMode.value = value;
-    Get.changeThemeMode(value ? ThemeMode.dark : ThemeMode.light);
-    await _storage.write(StorageKeys.settingsDarkMode, value);
+    final themeMode = value ? ThemeMode.dark : ThemeMode.light;
+    await Data.setSettingsDarkMode(themeMode.name);
+    Get.changeThemeMode(themeMode);
   }
 
   Future<void> clearLocalCache() async {
-    await _storage.clear();
-    isDarkMode.value = Get.isDarkMode;
+    await Data.clear();
 
     Get.snackbar(
       LocaleKeys.settings_cache_cleared_title.tr,

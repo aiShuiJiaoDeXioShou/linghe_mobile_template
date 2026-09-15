@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import '../../../routes/app_routes.dart';
+import 'package:linghe_mobile_template/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   final counter = 0.obs;
@@ -10,6 +9,6 @@ class HomeController extends GetxController {
   }
 
   void openSettings() {
-    Get.toNamed(Routes.settings);
+    Get.toNamed(AppPages.settings);
   }
 }
