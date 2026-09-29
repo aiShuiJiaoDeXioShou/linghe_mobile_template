@@ -217,3 +217,30 @@ flutter test
 ```bash
 git config commit.template .gitmessage
 ```
+
+## 初始化新项目（改名）
+
+模板提供 `scripts/rename.sh`，用于把模板标识替换为新项目标识，也是 `lhcli init mobile` 的调用入口：
+
+```bash
+sh scripts/rename.sh \
+  --org com.linghe \
+  --name my_shop \
+  --display-name "灵鹤商城"
+
+sh scripts/rename.sh \
+  --org com.linghe \
+  --name my_shop \
+  --display-name "灵鹤商城" \
+  --dry-run
+```
+
+脚本会更新：
+
+- Dart 包名、`package:` 导入与 GetStorage 容器名
+- Android `namespace` / `applicationId` 与 Kotlin 包目录
+- iOS `PRODUCT_BUNDLE_IDENTIFIER` 与 `CFBundleName`
+- Dart 应用类名与 `AppConfig.appName`
+- 本地化文案中的应用名与显示名
+
+脚本不执行 `git`，也不执行 `flutter pub get`，改名完成后请自行执行 `flutter pub get`。Windows 下请使用 Git Bash 执行。
